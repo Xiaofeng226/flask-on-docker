@@ -35,13 +35,13 @@ cd flask-on-docker
 
 **2. Build and start the containers:**
 ```bash
-docker-compose up -d --build
+docker compose up -d --build
 ```
 
 
 **3. Create the database tables:**
 ```bash
-docker-compose exec web python manage.py create_db
+docker compose exec web python manage.py create_db
 ```
 
 
@@ -55,12 +55,12 @@ docker-compose exec web python manage.py create_db
 
 **1. Build and start the production containers:**
 ```bash
-docker-compose -f docker-compose.prod.yml up -d --build
+docker compose -f docker-compose.prod.yml up -d --build
 ```
 
 **2. Create the database tables:**
 ```bash
-docker-compose -f docker-compose.prod.yml exec web python manage.py create_db
+docker compose -f docker-compose.prod.yml exec web python manage.py create_db
 ```
 
 **3. Visit the app:**
@@ -72,7 +72,7 @@ docker-compose -f docker-compose.prod.yml exec web python manage.py create_db
 
 **4. Stop the containers:**
 ```bash
-docker-compose -f docker-compose.prod.yml down -v
+docker compose -f docker-compose.prod.yml down -v
 ```
 
 

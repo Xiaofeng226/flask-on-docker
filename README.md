@@ -1,4 +1,4 @@
-# Flask on Docker 
+# Flask on Docker ![CI](https://github.com/Xiaofeng226/flask-on-docker/actions/workflows/ci.yml/badge.svg)
 
 ## Overview
 

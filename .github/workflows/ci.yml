@@ -29,16 +29,16 @@ jobs:
           ENVEOF
 
       - name: Build and start containers
-        run: docker-compose up -d --build
+        run: docker compose up -d --build
 
       - name: Wait for web service
         run: sleep 10
 
       - name: Create database
-        run: docker-compose exec -T web python manage.py create_db
+        run: docker compose exec -T web python manage.py create_db
 
       - name: Test the app is running
         run: curl --fail http://localhost:1234/ || exit 1
 
       - name: Stop containers
-        run: docker-compose down -v
+        run: docker compose down -v

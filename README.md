@@ -19,11 +19,11 @@ But note that I
 
 - [Docker](https://docs.docker.com/get-docker/)
 - [Docker Compose](https://docs.docker.com/compose/install/)
-- '.env.prod.db' file and other .env files. '.env.prod.db' is excluded from security sakes!
+- `.env.prod.db` file and other .env files. `.env.prod.db` is excluded from security sakes!
 
 ### Environment Configuration
 
-- For security reasons, we hide the production credentials that are hidden within the '.env.prod.db', as that is the oly file that has the production credentials. So we must include a '.env.prod.db' which includes the 'POSTGRES_USER', 'POSTGRES_PASSWORD' and 'POSTGRES_DB'
+- For security reasons, we hide the production credentials that are hidden within the `.env.prod.db`, as that is the only file that has the production credentials. So we must include a `.env.prod.db` which includes the `POSTGRES_USER`, `POSTGRES_PASSWORD` and `POSTGRES_DB`
 
 ### Development
 

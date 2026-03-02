@@ -1,0 +1,44 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Create .env.dev
+        run: |
+          cat > .env.dev << 'ENVEOF'
+          FLASK_APP=project/__init__.py
+          FLASK_DEBUG=1
+          DATABASE_URL=postgresql://hello_flask:hello_flask@db:5432/hello_flask_dev
+          SQL_HOST=db
+          SQL_PORT=5432
+          DATABASE=postgres
+          APP_FOLDER=/usr/src/app
+          ENVEOF
+
+      - name: Build and start containers
+        run: docker-compose up -d --build
+
+      - name: Wait for web service
+        run: sleep 10
+
+      - name: Create database
+        run: docker-compose exec -T web python manage.py create_db
+
+      - name: Test the app is running
+        run: curl --fail http://localhost:1234/ || exit 1
+
+      - name: Stop containers
+        run: docker-compose down -v
